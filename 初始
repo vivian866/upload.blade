@@ -1,0 +1,52 @@
+@extends('layouts.app')
+
+@section('content')
+<style>
+.sv-uploader {
+    position: relative;
+    height: 350px;
+    overflow-y: hidden;
+    width: inherit;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px dashed #CCCCCC;
+    background-color: #FAFAFA;
+    padding: 20px;
+}
+.sv-upload-button {
+    display: block;
+    width: 300px;
+    height: 80px;
+    margin: 100px auto;
+    text-align: center;
+    background: #00ABC7;
+    color: #FFFFFF;
+    border-radius: 2px;
+    border: 1px solid #37B7CC;
+}
+#modal-file-upload
+{
+top:250px;
+}
+</style>
+<div class="container" style="margin:40px auto">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">上传视频</div>
+                <div class="panel-body">
+                  <div class="sv-uploader">
+                    <button type="button" class="sv-upload-button" data-toggle="modal" data-target="#modal-file-upload">
+                      <h4>选择视频</h4><h6>本站只支持上传“mp4”格式的视频文件</h6>
+                    </button>
+                    @foreach ($errors->all() as $message)
+                      <span class="help-block"><strong>出错啦：{{ $message }}</strong></span>
+                    @endforeach
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@include('_modals')
+@endsection
